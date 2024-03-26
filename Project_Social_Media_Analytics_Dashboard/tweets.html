@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tweets</title>
+</head>
+<body>
+    <h1>Tweets</h1>
+    <!-- Form for adding new tweet -->
+    <form action="/tweets" method="post">
+        <input type="text" name="text" placeholder="Enter tweet text">
+        <button type="submit">Add Tweet</button>
+    </form>
+
+    <!-- Display existing tweets -->
+    <ul>
+        {% for tweet in tweets %}
+        <li>{{ tweet.text }}
+            <a href="/tweets/{{ tweet._id }}/edit">Edit</a>
+            <form action="/tweets/{{ tweet._id }}/delete" method="post">
+                <button type="submit">Delete</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
